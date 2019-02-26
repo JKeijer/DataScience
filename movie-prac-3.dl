@@ -35,6 +35,7 @@ actor_id(3).
 actor_id(4).
 actor_id(5).
 actor_id(6).
+actor_id(7).
 
 actor_name(1,"Sudipta Bhawmik").
 
@@ -45,7 +46,7 @@ actor_name(2,"Headley, Glenne") [x1=2].
 @p(x1=2) = 0.5.
 
 actor_name(3,"Tamal Roy Choudhury").
-actor_name(4,"Irrfan Khan").
+actor_name(4,"Not Irrfan Khan").
 actor_name(5,"Amy Wright").
 actor_name(6,"Sibani Biswas").
 
@@ -59,6 +60,20 @@ actor_movie_role(3,1,",Ashoke's Father").
 actor_movie_role(4,1,"Ashoke").
 actor_movie_role(5,1,"Pam").
 actor_movie_role(6,1,"Mrs. Mazumdar").
+
+actor_name(7,"Irrfan Khan") [z1=1].
+actor_name(7,"Ashoke Ganguli") [z1=2].
+actor_name(7,nothing) [z1=3].
+
+
+actor_movie_role(7,1,"Irrfan Khan") [z2=1].
+actor_movie_role(7,1,"Ashoke Ganguli") [z2=2].
+actor_movie_role(7,1,nothing) [z2=3].
+
+@p((z1=1 and z2=2)) = 0.4.
+@p((z1=2 and z2=1)) = 0.4.
+@p((z1=3 and z2=3)) = 0.2.
+
 
 actor(AID,MID,Name,Role) :-
 	actor_id(AID),
@@ -92,7 +107,7 @@ genreofmovie(A,B)?
 % b
 
 % c
-
+actorofmovie(A,B)?
 % d
 
 % e
