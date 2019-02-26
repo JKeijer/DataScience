@@ -96,7 +96,7 @@ genreofmovie(A,B)?
 % d
 
 % e
-
+movie(_, "Wall-E", _)?
 % 6.1
 
 keyword_id(1).
