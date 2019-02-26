@@ -96,7 +96,7 @@ suspected(Person) :-
 
 suspected(A)?
 % e 
-
+suspect(billy, _, _, _)?
 
 
 % f
