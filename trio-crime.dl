@@ -75,8 +75,42 @@ drives(3, johnny, green, mazda) [y3=2].
 @p(y3=1) = 0.5.
 @p(y3=2) = 0.5.
 
+% a 
+
+saw(A,B,C,toyota)?
+
+% b, c =frank
 suspect(Person, Witness, Color, Car ):-
     drives(ID, Person, Color, Car),
     saw(ID2, Witness, Color, Car).
  
-suspect(Person, Witness, Color , Car)?
+suspect(A, B, C, D)?
+
+% d (not done)
+
+%suspected(Person,Witness,C1,C2,Car) :-
+%	suspect(Person, Witness, C1, Car),
+%
+%	suspect(Person, Witness, C2, Car).
+
+%suspected(A,B,blue,green,D)?
+suspect(A,B,blue,D)?
+suspect(A,B,green,D)?
+
+% e 
+
+% f
+
+probs(Witness,Person) :-
+	drives(ID, Person, Color, Car),
+    saw(ID2, Witness, Color, Car).
+	
+probs(amy,frank)?
+
+% g (not done)
+
+%improbs(Witness,Person) :-
+%	~drives(ID, Person, Color, Car),
+%   saw(ID2, Witness, Color, Car).
+	
+%improbs(amy,frank)?
