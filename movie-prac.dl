@@ -73,18 +73,17 @@ location_movie(1,2).
 
 location(LID,MID,L) :- location_id(LID), location_location(LID,L), location_movie(LID,MID).
 
-
 actorofmovie(Actor,Movie) :-
-	movie(MID,Movie,Year),
-	actor(AID,MID,Actor,Role).
+    movie(MID,Movie,Year),
+    actor(AID,MID,Actor,Role).
 
 actororroleofmovie(Name,actor,Movie) :-
    movie(MID,Movie,Year),
-	actor(AID,MID,Name,Role).
+    actor(AID,MID,Name,Role).
 actororroleofmovie(Name,role,Movie) :-
-	movie(MID,Movie,Year),
-	actor(AID,MID, actor(AID, MID, Sctor,Name).
-    actor(AID, MID,Actor,Name).
+    movie(MID,Movie,Year),
+    actor(AID,MID,Sctor,Name).
+
 locationoractorofmovie(location, name, Movie):-
     movie(MID, Movie, Year),
     actor(AID, MID, name, Role),
