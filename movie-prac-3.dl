@@ -43,7 +43,11 @@ actor_name(4,"Irrfan Khan").
 actor_name(5,"Amy Wright").
 actor_name(6,"Sibani Biswas").
 
-actor_movie_role(1,1,"Subroto Mesho").
+actor_movie_role(1,1,"Subroto Mesho") [y2=1].
+actor_movie_role(1,1,"Subrata Mesho") [y2=2].
+@p(y1=1) = 0.5.
+@p(y1=2) = 0.5.
+
 actor_movie_role(2,1,"Lydia").
 actor_movie_role(3,1,",Ashoke's Father").
 actor_movie_role(4,1,"Ashoke").
