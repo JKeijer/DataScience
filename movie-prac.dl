@@ -83,6 +83,9 @@ actororroleofmovie(Name,actor,Movie) :-
 	actor(AID,MID,Name,Role).
 actororroleofmovie(Name,role,Movie) :-
 	movie(MID,Movie,Year),
-	actor(AID,MID,Sctor,Name).
-
-
+	actor(AID,MID, actor(AID, MID, Sctor,Name).
+    actor(AID, MID,Actor,Name).
+locationoractorofmovie(location, name, Movie):-
+    movie(MID, Movie, Year),
+    actor(AID, MID, name, Role),
+    location(LID, MID, location).
