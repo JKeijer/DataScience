@@ -88,15 +88,16 @@ suspect(A, B, C, D)?
 
 % d (not done)
 
-%suspected(Person,Witness,C1,C2,Car) :-
-%	suspect(Person, Witness, C1, Car),
-%
-%	suspect(Person, Witness, C2, Car).
+suspected(Person) :-
+	suspect(Person, Witness, green, Car).
+
+suspected(Person) :-
+	suspect(Person, Witness, blue, Car).
 
 %suspected(A,B,blue,green,D)?
 suspect(A,B,blue,D)?
 suspect(A,B,green,D)?
-
+suspected(A)?
 % e 
 
 % f
@@ -105,7 +106,7 @@ probs(Witness,Person) :-
 	drives(ID, Person, Color, Car),
     saw(ID2, Witness, Color, Car).
 	
-probs(amy,frank)?
+%probs(amy,frank)?
 
 % g (not done)
 
