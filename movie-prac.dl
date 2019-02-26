@@ -69,7 +69,7 @@ location_location(1,calcutta).
 location_location(2,india).
 
 location_movie(1,1).
-location_movie(1,2).
+location_movie(2,1).
 
 location(LID,MID,L) :- location_id(LID), location_location(LID,L), location_movie(LID,MID).
 
@@ -84,7 +84,9 @@ actororroleofmovie(Name,role,Movie) :-
     movie(MID,Movie,Year),
     actor(AID,MID,Sctor,Name).
 
-locationoractorofmovie(location, name, Movie):-
+locationoractorofmovie(L, Name, Movie):-
     movie(MID, Movie, Year),
-    actor(AID, MID, name, Role),
-    location(LID, MID, location).
+    actor(AID,MID,Name,Role),
+    location(LID,MID,L).
+
+locationoractorofmovie(india,B,C)?
