@@ -1,0 +1,88 @@
+% Good practice: full denormalization.
+
+movie_id(1).
+
+movie_name(1,"The Namesake").
+
+movie_year(1,2006).
+
+movie(MID,Name,Year) :-
+	movie_id(MID), movie_name(MID,Name), movie_year(MID,Year).
+
+
+genre_id(1).
+genre_id(2).
+genre_id(3).
+
+genre_genre(1,drama).
+genre_genre(2,comedy).
+genre_genre(3,thriller).
+
+genre_movie(1,1).
+genre_movie(2,1).
+
+genre(GID,MID,G) :- genre_id(GID), genre_genre(GID,G), genre_movie(GID,MID).
+
+
+actor_id(1).
+actor_id(2).
+actor_id(3).
+actor_id(4).
+actor_id(5).
+actor_id(6).
+
+
+actor_name(1,"Sudipta Bhawmik").
+actor_name(2,"Glenne Headley").
+actor_name(3,"Tamal Roy Choudhury").
+actor_name(4,"Irrfan Khan").
+actor_name(5,"Amy Wright").
+actor_name(6,"Sibani Biswas").
+
+actor_movie_role(1,1,"Subroto Mesho").
+actor_movie_role(2,1,"Lydia").
+actor_movie_role(3,1,",Ashoke's Father").
+actor_movie_role(4,1,"Ashoke").
+actor_movie_role(5,1,"Pam").
+actor_movie_role(6,1,"Mrs. Mazumdar").
+
+actor(AID,MID,Name,Role) :-
+	actor_id(AID),
+	actor_movie_role(AID,MID,Role),
+	actor_name(AID,Name).
+
+keyword_id(1).
+keyword_id(2).
+
+keyword_keyword(1,india).
+keyword_keyword(2,train).
+
+keyword_movie(1,1).
+keyword_movie(2,1).
+
+keyword(KID,MID,K) :- keyword_id(KID), keyword_keyword(KID,K), keyword_movie(KID,MID).
+
+location_id(1).
+location_id(2).
+
+location_location(1,calcutta).
+location_location(2,india).
+
+location_movie(1,1).
+location_movie(1,2).
+
+location(LID,MID,L) :- location_id(LID), location_location(LID,L), location_movie(LID,MID).
+
+
+actorofmovie(Actor,Movie) :-
+	movie(MID,Movie,Year),
+	actor(AID,MID,Actor,Role).
+
+actororroleofmovie(Name,actor,Movie) :-
+   movie(MID,Movie,Year),
+	actor(AID,MID,Name,Role).
+actororroleofmovie(Name,role,Movie) :-
+	movie(MID,Movie,Year),
+	actor(AID,MID,Sctor,Name).
+
+
