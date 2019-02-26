@@ -94,9 +94,6 @@ suspected(Person) :-
 suspected(Person) :-
 	suspect(Person, Witness, blue, Car).
 
-%suspected(A,B,blue,green,D)?
-suspect(A,B,blue,D)?
-suspect(A,B,green,D)?
 suspected(A)?
 % e 
 
@@ -110,7 +107,7 @@ probs(Witness,Person) :-
 	
 %probs(amy,frank)?
 
-% g (not done)
+% g 
 
 improbs(Witness,Person) :-
 	~drives(ID, Person, Color, Car),
