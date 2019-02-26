@@ -75,5 +75,8 @@ drives(3, johnny, green, mazda) [y3=2].
 @p(y3=1) = 0.5.
 @p(y3=2) = 0.5.
 
-
-saw(A,B,C,toyota)?
+suspect(Person, Witness, Color, Car ):-
+    drives(ID, Person, Color, Car),
+    saw(ID2, Witness, Color, Car).
+ 
+suspect(Person, Witness, Color , Car)?
