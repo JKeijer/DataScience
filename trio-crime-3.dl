@@ -105,4 +105,8 @@ trustworthy(4,diane) [x5=4].
 @p(x5=3) = 0.8.
 @p(x5=4) = 0.1.
 
-
+suspect_trust(Person, Witness, Color, Car ):-
+    drives(ID, Person, Color, Car),
+    saw(ID2, Witness, Color, Car),
+    trustworthy(IDTRUST, Witness).
+suspect_trust(A,B,C,D)?
