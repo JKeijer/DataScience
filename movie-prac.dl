@@ -90,3 +90,34 @@ locationoractorofmovie(L, Name, Movie):-
     location(LID,MID,L).
 
 locationoractorofmovie(india,B,C)?
+
+locationoractorofmovie(A,"Glenne Headley",C)?
+
+word(L,WIS) :- 
+	location(LID,MID,L), whatis(1,WIS).
+word(K,WIS) :-	
+	keyword(KID,MID,K), whatis(2,WIS).
+word(Name,WIS) :-
+	actor(AID,MID,Name,Role), whatis(3,WIS).
+word(Name,WIS) :-
+	movie(MID,Name,Year), whatis(4,WIS).
+word(Role,WIS) :- 
+	actor(AID,MID,Name,Role), whatis(5,WIS).
+
+whatis_id(1).
+whatis_id(2).
+whatis_id(3).
+whatis_id(4).
+whatis_id(5).
+
+whatis_name(1,location).
+whatis_name(2,keyword).
+whatis_name(3,actor).
+whatis_name(4,movie).
+whatis_name(5,role).
+
+whatis(WID,WIS) :- whatis_id(WID), whatis_name(WID, WIS).
+
+word("Pam",B)?
+
+	
