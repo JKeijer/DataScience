@@ -1,0 +1,131 @@
+% Good practice: full denormalization.
+
+movie_id(1).
+movie_id(2).
+
+movie_name(1,"The Namesake") [x1=1] .
+movie_name(2,"Namesake, The") [x1=1].
+movie_name(1,"The Namesake") [x1=2].
+
+@p (x1=1) = 0.2.
+@p (x1=2) = 0.8.
+
+movie_year(1,2006).
+movie_year(2,2006).
+
+movie(MID,Name,Year) :-
+	movie_id(MID), movie_name(MID,Name), movie_year(MID,Year).
+
+
+genre_id(1).
+genre_id(2).
+genre_id(3).
+
+genre_genre(1,drama).
+genre_genre(2,comedy).
+genre_genre(3,romance).
+
+genre_movie(1,1).
+
+genre_movie(2,2).
+genre_movie(1,2).
+genre_movie(3,2).
+
+genre(GID,MID,G) :- genre_id(GID), genre_genre(GID,G), genre_movie(GID,MID).
+
+
+actor_id(1).
+actor_id(2).
+actor_id(3).
+actor_id(4).
+actor_id(5).
+actor_id(6).
+actor_id(7).
+
+
+actor_name(1,"Sudipta Bhawmik") [y1=1].
+actor_name(2,"Glenne Headley") [y2=1].
+actor_name(3,"Tamal Roy Choudhury") [y3=1].
+actor_name(4,"Irrfan Khan") [y4=1].
+actor_name(5,"Amy Wright") [y5=1].
+actor_name(6,"Sibani Biswas") [y6=1].
+actor_name(7,"Sebastian Roche") [y7=1].
+
+actor_movie_role(1,1,"Subroto Mesho").
+actor_movie_role(2,1,"Lydia") [z1=1].
+actor_movie_role(3,1,"Ashoke's Father").
+actor_movie_role(4,1,"Ashoke")[z2=1].
+actor_movie_role(5,1,"Pam") [z3=1].
+actor_movie_role(6,1,"Mrs. Mazumdar") [z4=1].
+actor_movie_role(7,1,"Pierre").
+
+actor_name(1,"Bhawmik, Sudipta") [y1=2].
+actor_name(2,"Headly, Glenne") [y2=2].
+actor_name(3,"Sengupta, Tamal") [y3=2].
+actor_name(4,"Khan, Irfan (I)") [y4=2].
+actor_name(5,"Wright, Amy (I)") [y5=2].
+actor_name(6,"Biswas, Sibani") [y6=2].
+actor_name(7,"Roché, Sebastian") [y7=2].
+
+actor_movie_role(1,2,"Subroto Mesho").
+actor_movie_role(2,2,"Lydia Ratliff") [z1=2].
+actor_movie_role(3,2,"Ashoke's Father").
+actor_movie_role(4,2,"Ashoke Ganguli") [z2=2].
+actor_movie_role(5,2,"Pamela") [z3=2].
+actor_movie_role(6,2,"Mrs. Mazoomdar") [z4=2].
+actor_movie_role(7,2,"Pierre").
+
+@p (y1=1) = 0.5.
+@p (y1=2) = 0.5.
+
+@p (y2=1) = 0.5.
+@p (y2=2) = 0.5.
+
+@p (y3=1) = 0.5.
+@p (y3=2) = 0.5.
+
+@p (y4=1) = 0.9.
+@p (y4=2) = 0.1.
+
+@p (y5=1) = 0.9.
+@p (y5=2) = 0.1.
+
+@p (y6=1) = 0.5.
+@p (y6=2) = 0.5.
+
+@p (y7=1) = 0.3.
+@p (y7=2) = 0.7.
+
+
+@p (z1=1) = 0.2.
+@p (z1=2) = 0.8.
+
+@p (z2=1) = 0.2.
+@p (z2=2) = 0.8.
+
+@p (z3=1) = 0.3.
+@p (z3=2) = 0.7.
+
+@p (z4=1) = 0.7.
+@p (z4=2) = 0.3.
+
+actor(AID,MID,Name,Role) :-
+	actor_id(AID),
+	actor_movie_role(AID,MID,Role),
+	actor_name(AID,Name).
+
+
+actorofmovie(Actor,Movie) :-
+	movie(MID,Movie,Year),
+	actor(AID,MID,Actor,Role).
+
+%actororroleofmovie(Name,actor,Movie) :-
+%   movie(MID,Movie,Year),
+%	actor(AID,MID,Name,Role).
+actororroleofmovie(Name,Role,Movie) :-
+	movie(MID,Movie,Year),
+	actor(AID,MID,Name,Role).
+	
+actororroleofmovie(A,B,C)?
+
+
